@@ -206,6 +206,24 @@ CHANGE DESCRIPTION:
 
 Changed the database query implementation.
 
+OR
+Audit this change.
+
+OLD CODE:
+const query = 'SELECT * FROM users WHERE id = ?';
+db.query(query, [id]);
+
+NEW CODE:
+const query = 'SELECT * FROM users WHERE id = ' + req.query.id;
+db.query(query);
+console.log(result);
+
+CHANGE DESCRIPTION:
+The database query was changed from a parameterized query to string concatenation using a request parameter.
+
+Please compare this change with the previous audit history available in the workflow.
+Identify whether this is a security regression and whether it relates to any previous audit findings.
+Do not assume affected users, data, or components unless supported by the provided information.
 
 SECURITY POLICY:
 
